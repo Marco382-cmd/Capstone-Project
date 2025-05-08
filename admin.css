@@ -1,0 +1,130 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .admin-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin: 15px 0;
+  }
+  
+  .sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .main-panel {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+    overflow-y: auto;
+  }
+  
+  .content-section {
+    display: none;
+  }
+  
+  .content-section:not(.hidden) {
+    display: block;
+  }
+  
+  .assistance-form {
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  
+  .assistance-form select,
+  .assistance-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .assistance-form select {
+    height: 45px;
+  }
+  
+  .checkbox-group {
+    margin-bottom: 15px;
+  }
+  
+  .checkbox-group label {
+    display: block;
+    margin: 5px 0;
+    font-size: 15px;
+  }
+  
+  .assistance-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .assistance-item {
+    background: #ecf0f1;
+    padding: 15px;
+    border-left: 5px solid #3498db;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .assistance-item h3 {
+    margin-top: 0;
+  }
+  
+  .application-card {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 700px;
+  }
+  
+  .application-card select {
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 6px;
+    margin: 10px 0;
+  }
+  
+  .application-card button {
+    padding: 10px 16px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  

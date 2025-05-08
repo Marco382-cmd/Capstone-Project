@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Nected Assistance Portal</title>
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <h2>Nected Admin</h2>
+      <nav>
+        <ul>
+          <li><a href="#" onclick="showSection('assistances')">Manage Assistance</a></li>
+          <li><a href="#" onclick="showSection('applications')">Verify Application</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <section id="assistances" class="content-section">
+        <h2>Manage Assistances</h2>
+        <div class="assistance-form">
+          <select id="newAssistanceTitle">
+            <option value="">Select Assistance Type</option>
+            <option value="Educational Assistance">Educational Assistance</option>
+            <option value="Medical Assistance">Medical Assistance</option>
+          </select>
+          <textarea id="newAssistanceDesc" placeholder="Description"></textarea>
+          <div class="checkbox-group">
+            <label><input type="checkbox" value="Barangay Clearance"> Barangay Clearance</label><br>
+            <label><input type="checkbox" value="Indigency"> Indigency</label><br>
+            <label><input type="checkbox" value="ID Picture"> ID Picture</label><br>
+            <label><input type="checkbox" value="Enrollment Form"> Enrollment Form</label><br>
+            <label><input type="checkbox" value="Grades"> Grades</label>
+          </div>
+          <button onclick="addAssistance()">Add Assistance</button>
+        </div>
+        <div id="assistanceList">
+          <!-- Dynamically added assistance types -->
+        </div>
+      </section>
+
+      <section id="applications" class="content-section hidden">
+        <h2>Verify Applications</h2>
+        <div class="application-card">
+          <p><strong>Name:</strong> Juan Dela Cruz</p>
+          <p><strong>Email:</strong> juan@example.com</p>
+          <p><strong>Assistance Type:</strong> Educational Assistance</p>
+          <p><strong>Submitted Files:</strong></p>
+          <ul>
+            <li><a href="#" target="_blank">Barangay Clearance</a></li>
+            <li><a href="#" target="_blank">School ID</a></li>
+          </ul>
+          <label for="status">Status:</label>
+          <select id="status">
+            <option value="pending">Pending</option>
+            <option value="qualified">Qualified</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          <button onclick="notifyApplicant()">Notify Applicant</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function addAssistance() {
+      const title = document.getElementById('newAssistanceTitle').value;
+      const desc = document.getElementById('newAssistanceDesc').value;
+      const checkedBoxes = document.querySelectorAll('.checkbox-group input:checked');
+      const requirements = Array.from(checkedBoxes).map(cb => cb.value);
+
+      if (!title || !desc) return alert("Please fill out both fields.");
+
+      const list = document.getElementById('assistanceList');
+      const div = document.createElement('div');
+      div.className = 'assistance-item';
+      div.innerHTML = `<h3>${title}</h3><p>${desc}</p><p><strong>Requirements:</strong> ${requirements.join(', ')}</p><button onclick="this.parentNode.remove()">Remove</button>`;
+      list.appendChild(div);
+
+      document.getElementById('newAssistanceTitle').value = '';
+      document.getElementById('newAssistanceDesc').value = '';
+      checkedBoxes.forEach(cb => cb.checked = false);
+    }
+
+    function notifyApplicant() {
+      const status = document.getElementById('status').value;
+      alert(`Applicant has been marked as: ${status}`);
+    }
+  </script>
+</body>
+</html>
