@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nected - District 4 Assistance Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Nected</div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#assistance-list">Available Assistance</a></li>
+      </ul>
+    </nav>
+    <div class="user-actions">
+      <a href="#">Notifications</a>
+      <a href="#">Profile</a>
+      <a href="#">History</a>
+      <div class="dropdown">
+        <span>John Marco <i class="caret"></i></span>
+        <div class="dropdown-content">
+          <a href="#assistance-list">Available Assistance</a>
+          <a href="#">Profile Settings</a>
+          <a href="#">Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="assistance-list">
+      <h2>Available Assistance</h2>
+      <div class="post">
+        <h3>Educational Assistance</h3>
+        <p>For students currently enrolled in public or private schools. Priority to indigent families.</p>
+        <p><strong>Requirements:</strong> Barangay Clearance, School ID, Proof of Enrollment</p>
+        <button class="apply-button" data-type="Educational Assistance">Apply Now</button>
+      </div>
+
+      <div class="post">
+        <h3>Medical Assistance</h3>
+        <p>For residents needing financial support for hospital bills or medication.</p>
+        <p><strong>Requirements:</strong> Medical Certificate, Hospital Billing Statement, Barangay Clearance</p>
+        <button class="apply-button" data-type="Medical Assistance">Apply Now</button>
+      </div>
+    </section>
+
+    <div id="form-popup" class="form-popup hidden">
+      <h2>Application Form</h2>
+      <form id="application-form">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="assistanceType">Type of Assistance:</label>
+        <select id="assistanceType" name="assistanceType" required>
+          <option value="Educational Assistance">Educational Assistance</option>
+          <option value="Medical Assistance">Medical Assistance</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="requirements">Upload Requirements:</label>
+        <input type="file" id="requirements" name="requirements" multiple required>
+
+        <button type="submit">Submit Application</button>
+        <button type="button" id="close-form">Close</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Nected - District 4 Assistance Portal</p>
+  </footer>
+
+  <script>
+    const formPopup = document.getElementById('form-popup');
+    const closeBtn = document.getElementById('close-form');
+    const assistanceSelect = document.getElementById('assistanceType');
+
+    document.querySelectorAll('.apply-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const type = button.getAttribute('data-type');
+        assistanceSelect.value = type;
+        formPopup.classList.remove('hidden');
+        formPopup.classList.add('show');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      formPopup.classList.remove('show');
+      formPopup.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
